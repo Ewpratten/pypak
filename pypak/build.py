@@ -5,7 +5,7 @@ import zipapp
 
 def zipFolder(path, name):
 	print("Packing project")
-	zipapp.create_archive(path, f"./build/pypak/{name}")
+	zipapp.create_archive(path, f"./build/pypak/{name}", compressed=True)
 	print("Done")
 
 def mkFolder(project_name):
