@@ -2,7 +2,10 @@ import urllib.request
 import os.path
 import os
 
-version_url = "https://github.com/Ewpratten/pypak/raw/master/pypak/__main__.py"
+version_url = "https://api.github.com/repos/ewpratten/pypak/releases/latest"
+
+def toDict(json):
+	return eval(json.replace("false", "False").replace("true", "True").replace('null', "None"))
 
 def update(version):
 	print(f"Updating pypak to version: {version}")
@@ -14,14 +17,14 @@ def update(version):
 		install_path = "./pypak"
 	
 	print("Downloading from GitHub")
-	os.system(f"curl -L https://github.com/Ewpratten/pypak/releases/download/{version}/pypak > {install_path}")
+	os.system(f"curl -L -s https://github.com/Ewpratten/pypak/releases/download/{version}/pypak > {install_path}")
 	
 	
 
 def checkUpdates(version):
 	print("Checking for updates")
 	
-	new_version =  urllib.request.urlopen(version_url).read().decode().split('"')[1]
+	new_version =  toDict(urllib.request.urlopen(version_url).read().decode())["tag_name"]
 	if version == new_version:
 		print("pypak up to date")
 		return
