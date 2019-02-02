@@ -1,5 +1,6 @@
 import urllib.request
 import os.path
+import os
 
 version_url = "https://github.com/Ewpratten/pypak/raw/master/pypak/__main__.py"
 
@@ -11,6 +12,9 @@ def update(version):
 		install_path = "./pypak-update"
 	else:
 		install_path = "./pypak"
+	
+	print("Downloading from GitHub")
+	os.system(f"curl https://github.com/Ewpratten/pypak/releases/download/{version}/pypak > {install_path}")
 	
 	
 
