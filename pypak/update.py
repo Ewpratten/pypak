@@ -14,7 +14,7 @@ def update(version):
 		install_path = "./pypak"
 	
 	print("Downloading from GitHub")
-	os.system(f"curl https://github.com/Ewpratten/pypak/releases/download/{version}/pypak > {install_path}")
+	os.system(f"curl -L https://github.com/Ewpratten/pypak/releases/download/{version}/pypak > {install_path}")
 	
 	
 

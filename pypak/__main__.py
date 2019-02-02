@@ -1,4 +1,4 @@
-version = "0.1.1"
+version = "0.2.0"
 # line above is parsed over http by the update script. Do not move it
 
 from update import update, checkUpdates
