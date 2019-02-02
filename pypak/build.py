@@ -1,13 +1,17 @@
 import os.path
-import os.system
+import os
 
-def zipFolder(path)
+import zipapp
+
+def zipFolder(path, name):
 	print("Packing project")
+	zipapp.create_archive(path, f"./build/pypak/{name}")
+	print("Done")
 
 def mkFolder(project_name):
-	print("Trying to create folder")
-	os.system("mkdir ./build")
-	os.system("mkdir ./build/pypak")
+	print("Creating build directory")
+	os.system("mkdir ./build 2> /dev/null")
+	os.system("mkdir ./build/pypak 2> /dev/null")
 	
 	print("Detecting previous builds")
 	
@@ -16,5 +20,7 @@ def mkFolder(project_name):
 		print("Removing old build")
 		os.system(f"rm -rf ./build/pypak/{project_name}")
 		print("Done")
+	else:
+		print("None found")
 	
 	
